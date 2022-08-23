@@ -1,0 +1,18 @@
+version: '3'
+services:
+
+    mysql:
+      image: mariadb:10.5-focal
+      container_name: mysql
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: tmpdb
+        MYSQL_USER: tmpdb
+        MYSQL_PASSWORD: tmpdb
+      ports:
+        - "3306:3306"
+      volumes:
+        - ./mysql:/var/lib/mysql
+        - ./local/mysql/mariadb.conf.d:/etc/mysql/mariadb.conf.d
+      restart: always
+
